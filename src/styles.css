@@ -1,0 +1,335 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  background-color: #f5f5f5;
+}
+nav {
+  background-color: #3d3d3d;
+  margin-top: 0px;
+  padding: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.headerName {
+  background: linear-gradient(to left, #52acff, #ffe32c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  padding: 7px;
+}
+.selected {
+  color: cornflowerblue !important;
+  /* background-color: #c8c8c8; */
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  /* background: linear-gradient(to left, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  /* background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+}
+.allList {
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+  font-size: 20px;
+  border: 1px solid gray;
+  box-shadow: 0 0 5px 1px;
+}
+.allList input {
+  width: 300px;
+}
+.allList textarea {
+  width: 610px;
+}
+
+.phraseBtn {
+  height: 2rem;
+  width: 3rem;
+}
+
+input,
+select,
+button,
+.additionAppointments {
+  margin: auto 0.5rem;
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  width: 10rem;
+  border-radius: 0.4rem;
+  transition-duration: 0.4s;
+  size: 1.2rem;
+  height: 2.3rem;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+select {
+  height: 2.3rem;
+}
+input,
+textarea {
+  background-color: #f5f5f5;
+}
+.send,
+button {
+  cursor: pointer;
+}
+select:hover {
+  background-color: silver;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.send:hover,
+button:hover,
+.additionAppointments:hover {
+  background-color: #555555;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.study {
+  height: 100px;
+  border: 2px solid black;
+  margin: 20px;
+  text-align: center;
+}
+.text {
+  font-weight: bold;
+  color: rgba (0, 0, 0, 0.6);
+}
+
+.wordItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 1px 10px;
+  border: 1px solid black;
+}
+
+.wordList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.landing {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+.generalInfo {
+  margin: 0px auto 5px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+  font-size: 20px;
+}
+.newFour {
+  margin: 5px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 20px;
+}
+.generalInfo div {
+  padding-right: 15px;
+}
+.nav-links {
+  display: flex;
+  list-style-type: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  margin-left: auto;
+  margin-top: 0;
+}
+.nav-links li {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  margin: 0;
+  width: 30%;
+  cursor: pointer;
+}
+.nav-links ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.nav-links li:hover {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.headerSpan {
+  margin-left: 20px;
+}
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    position: absolute;
+    top: 0.6rem;
+    right: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 35px;
+    height: 20px;
+    background-color: cornflowerblue;
+    border-radius: 0.25rem;
+    border-bottom-color: gold;
+    cursor: pointer;
+  }
+  .hamburger .bar {
+    height: 4px;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+  }
+  .hideHamburger {
+    display: none;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  nav {
+    height: 6vh;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+  .nav-links.active {
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-links li {
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+  }
+  nav.active {
+    height: 30vh;
+  }
+}
+.textPart {
+  width: 40%;
+  text-align: center;
+  padding: 10px;
+}
+.englishPart {
+  width: 40%;
+  text-align: start;
+  padding: 10px;
+}
+.mainForm {
+  padding: 10px;
+}
+input[type="checkbox"] {
+  height: 15px;
+  width: 40px;
+}
+.statusFree {
+  color: coral !important;
+}
+.statusLimited {
+  color: red !important;
+}
+.smallBtn,
+#removeBtn {
+  width: 50px;
+}
+.answerPart {
+  display: flex;
+  flex-direction: row;
+}
+.answerPart label {
+  margin-top: 8px;
+  padding: 2px;
+}
+
+.verbItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.trSection {
+  padding: 0.2rem;
+  margin-left: 20px;
+  width: 25%;
+  text-align: start;
+}
+.irregularTable {
+  border: 1px solid black;
+  text-align: center;
+  width: 60%;
+  margin: 20px auto;
+}
+.completeListName {
+  margin: 15px auto;
+}
+#tense {
+  color: coral;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.phraseLine {
+  margin: 0 auto;
+  height: 4rem;
+  padding: 0.75rem;
+  width: 60%;
+  border: 1px solid cornflowerblue;
+  text-align: center;
+}
+.englishPhrase {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#sortWords {
+  margin-top: 0px;
+}
+.generalInfo div {
+  margin-top: 10px;
+}
+.importBlock {
+  margin: 0 auto;
+  text-align: center;
+}
+.importBlockBtn {
+  width: 220px !important;
+  height: 50px !important;
+  font-size: 20px;
+  background-color: darkslateblue;
+}
+#exportBtn {
+  background-color: darkolivegreen;
+}

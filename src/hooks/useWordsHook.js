@@ -1,10 +1,11 @@
 import { wordsReducer, WORDS_ACTIONS, initialState } from "../wordsReducer";
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import { isJsonString } from "../utils/isJsonString";
 
 export const useWordsHook = () => {
   const [words, dispatch] = useReducer(wordsReducer, initialState());
-
+  const [enVisibility, setEnVisibility] = useState(false);
+  const changeEnVisibility = () => setEnVisibility(!enVisibility)
   const onImport = (importedData) => {
     if (!isJsonString(importedData)) {
       alert("Невірний формат даних!");
@@ -17,11 +18,12 @@ export const useWordsHook = () => {
     alert("Дані успішно імпортовано");
   };
 
-  const onAdd = (english, ukrainian, notes) =>
+  const onAdd = (english, ukrainian, notes, part) =>
     dispatch({
       english,
       ukrainian,
       notes,
+      part,
       type: WORDS_ACTIONS.ADD,
     });
 
@@ -48,5 +50,7 @@ export const useWordsHook = () => {
     onSwitch,
     onRemove,
     onImport,
+    enVisibility,
+    changeEnVisibility
   };
 };

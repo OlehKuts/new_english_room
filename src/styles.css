@@ -24,14 +24,9 @@ nav {
 }
 .selected {
   color: cornflowerblue !important;
-  /* background-color: #c8c8c8; */
   border-left: 2px solid white;
   border-right: 2px solid white;
   border-bottom: 2px solid white;
-  /* background: linear-gradient(to left, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  /* background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
 }
 .allList {
   margin: 0 auto;
@@ -50,7 +45,7 @@ nav {
   width: 300px;
 }
 .allList textarea {
-  width: 610px;
+  width: 777px;
 }
 
 .phraseBtn {
@@ -325,10 +320,12 @@ input[type="checkbox"] {
   text-align: center;
 }
 .importBlockBtn {
-  width: 220px !important;
-  height: 50px !important;
-  font-size: 20px;
+  margin: 50px;
+  width: 160px !important;
+  height: 40px !important;
+  font-size: 16px;
   background-color: darkslateblue;
+  color: white
 }
 #exportBtn {
   background-color: darkolivegreen;

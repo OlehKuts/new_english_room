@@ -13,7 +13,7 @@ export const initialState = () => {
   return wordsParsed || []; //повертає words або пустий масив
 };
 export const wordsReducer = (words, action) => {
-  const { type, _id, english, ukrainian, notes, payload } = action;
+  const { type, _id, english, ukrainian, notes, payload, part } = action;
 
   switch (type) {
     case WORDS_ACTIONS.IMPORT:
@@ -22,9 +22,9 @@ export const wordsReducer = (words, action) => {
       return [
         {
           _id: uuidv4(),
-          english: english,
-          ukrainian: ukrainian,
-          notes: notes,
+          english,
+          ukrainian,
+          notes, part,
           completed: false,
         },
         ...words,

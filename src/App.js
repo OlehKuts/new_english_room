@@ -6,11 +6,12 @@ import { IrregularTable } from "./components/irregularTable";
 import { useWordsHook } from "./hooks/useWordsHook";
 import { WordsContext } from "./wordsContext";
 import { Icon } from "./icon";
-import { irregularVerbs, tenseList, phraseList } from "./database";
+import { irregularVerbs, phraseList } from "./database";
 import { Text } from "./components/text";
 import { Phrase } from "./components/Phrase";
 import useCopyToClipboard from "./custom_hooks/useCopyToClipboard";
-import { isJsonString } from "./utils/isJsonString";
+import { conditions } from "./staticData";
+import { getSortedFilteredWords } from "./utils/getSortedFilteredWords";
 
 export const App = () => {
   const [active, setActive] = useState(false);
@@ -20,20 +21,11 @@ export const App = () => {
     false,
     false,
   ]);
-  const { words, onAdd, onSwitch, onRemove, onImport } = useWordsHook();
-  const conditions = ["all", "unknown", "random"];
-
+  const { words, onAdd, onSwitch, onRemove, onImport, enVisibility, changeEnVisibility } = useWordsHook();
+ 
   const [condition, setCondition] = useState(conditions[0]);
   const onConditionChange = (e) => setCondition(e.target.value);
-
-  const sortSpliceArrays = (array, stopIndex) => {
-    const result = array
-      .map((i) => i.ukrainian)
-      .sort(() => Math.random() - 0.5)
-      .splice(0, stopIndex);
-    return result;
-  };
-
+  
   // import-export
   const [showImport, setShowImport] = useState(false);
   const [copiedToClipboard, { success }] = useCopyToClipboard();
@@ -47,33 +39,16 @@ export const App = () => {
   };
 
   const sortedWords = useMemo(() => {
-    if (condition === "uncompleted") {
-      return words.filter((word) => !word.completed);
-    } else if (condition === "random") {
-      return [...words].sort(() => Math.random() - 0.5);
-    } else {
-      return words;
-    }
+   return getSortedFilteredWords(condition, words);
   }, [condition, words]);
 
-  const [randomList, setRandomList] = useState([]);
-  const [randomTense, setRandomTense] = useState("");
+
   const [randomPhrases, setRandomPhrases] = useState([...phraseList]);
-  const onRandomSubmit = (e) => {
-    e.preventDefault();
-    const eightWords = sortSpliceArrays(words, 8);
-    const twoPhrases = sortSpliceArrays(phraseList, 2);
-    const output = [...eightWords, ...twoPhrases];
-    const randomTenseList = tenseList.sort(() => Math.random() - 0.5);
-    setRandomList(output);
-    setRandomTense(randomTenseList[0]);
-  };
   const onRandomPhraseSubmit = (e) => {
     e.preventDefault();
     const sortedList = [...randomPhrases].sort(() => Math.random() - 0.5);
     setRandomPhrases(sortedList);
   };
-  console.log(isJsonString("test"));
 
   return (
     <>
@@ -122,19 +97,6 @@ export const App = () => {
       <div className="landing">
         {showHeaderPart[0] ? (
           <>
-            <div className="newFour">
-              <form>
-                <div>
-                  <p id="tense">{randomTense}</p>
-                  <ul>
-                    {randomList.map((i) => (
-                      <li>{i}</li>
-                    ))}
-                  </ul>
-                </div>
-              </form>
-            </div>
-
             <div className="generalInfo">
               <div>Overall - {words.length}</div>
               <div>
@@ -155,6 +117,8 @@ export const App = () => {
                   </option>
                 ))}
               </select>
+              <button onClick={changeEnVisibility} style={{backgroundColor : enVisibility ? "lavender" : "beige"}}>
+                {enVisibility ? "EN mode" : "UA mode"}</button>
             </div>
             <hr />
             <div className="allList">
@@ -172,6 +136,7 @@ export const App = () => {
                             onSwitch={onSwitch}
                             onRemove={onRemove}
                             index={index + 1}
+                            enVisibility={enVisibility}
                           />
                         ))}
                   </>

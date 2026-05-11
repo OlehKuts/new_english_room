@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# New English Room 🇬🇧🇺🇦
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**New English Room** is a functional React-based application designed for efficient English language learning. Developed as a personal trainer for vocabulary expansion, spelling practice, and mastering common idioms, the app is actively used by the author and a group of users for daily language practice.
 
-## Available Scripts
+🚀 **Live Demo:** [View Project](https://olehkuts.github.io/new_english_room/)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📸 Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Word list and Add entry process](assets/list_page.png)
+_Interface of the "All list" page: dictionary overview and the "Add New Word" workflow._
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ✨ Key Sections & Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The application is divided into specialized modules for a comprehensive learning experience:
 
-### `npm run build`
+### 1. All List (Core Dictionary)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The heart of the application, offering full control over your personal vocabulary:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Full CRUD Operations:** Add, edit, and delete words, including part-of-speech tags.
+- **Advanced Sorting:** Sort by alphabet, time added, part of speech, or random (Shuffle) mode.
+- **Learning Tools:**
+  - **Spelling Check:** Test your writing accuracy for any word in your list.
+  - **Reverse Learning Mode:** Toggle between ENG-UA and UA-ENG directions.
+  - **Status Tracking:** Mark words as "learned" or "unlearned" to focus your efforts.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Irregular Verbs
 
-### `npm run eject`
+An interactive reference table containing the most common English irregular verbs with translations for quick lookup and memorization.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Main Phrases
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A curated collection of over 200 essential English phrases and sentences. It includes a self-test feature where users can toggle the visibility of translations.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4. Import & Export (Data Portability)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Complete ownership of your learning data:
 
-## Learn More
+- **Export:** Save your entire dictionary into a `.json` text file.
+- **Import:** Restore previously saved data or migrate it to another device/browser.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🛠 Tech Stack
 
-### Code Splitting
+- **Core:** React (Functional Components).
+- **State & Logic:**
+  - **Custom Hooks:** Business logic and state management are extracted into custom hooks for better maintainability and cleaner components.
+  - **Local Storage API:** Persistent data storage directly in the browser, enabling a full-featured experience without a dedicated backend.
+- **Libraries:**
+  - `uuid` — for generating unique identifiers for dictionary entries.
+  - `copy-to-clipboard` — for seamless copying of phrases and vocabulary.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 💡 Technical Highlights
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1.  **Modular Architecture:** Built with functional components and a focus on the separation of concerns.
+2.  **Logic Separation:** Complex filtering and sorting logic are decoupled from the UI, making the codebase scalable.
+3.  **Offline-First Experience:** Since data is handled via `LocalStorage`, the app works instantly and retains all user progress between browser sessions.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🚀 Local Setup and Installation
 
-### Advanced Configuration
+1. Clone the repository:
+   ```bash
+   git clone https://github.com
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd new_english_room
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_Developed by [Oleh Kuts](https://github.com/OlehKuts)_

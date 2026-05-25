@@ -6,7 +6,7 @@ import { withCheckedStyles } from "./withCheckedStyles";
 import { Text } from "./components/text";
 
 export const WordItem = withCheckedStyles(
-  ({ word, onSwitch, onRemove, index, enVisibility }) => {
+  ({ word, onSwitch, onRemove, index, enVisibility, yourAnswer }) => {
     const [showNotes, setShowNotes] = useState(false);
     const [showEnglish, setShowEnglish] = useState(enVisibility);
     const [showUkrainian, setShowUkrainian] = useState(!enVisibility);
@@ -18,12 +18,10 @@ export const WordItem = withCheckedStyles(
     };
     const toggleVisibility = () => {
       if (enVisibility) {
-        setShowUkrainian(!showUkrainian)
-      }
-      else {
+        setShowUkrainian(!showUkrainian);
+      } else {
         setShowEnglish(!showEnglish);
       }
-      
     };
     const sendAnswer = () => {
       if (answer === "") return;
@@ -43,18 +41,19 @@ export const WordItem = withCheckedStyles(
     const onAnswerChange = (e) => {
       setAnswer(e.target.value);
     };
-    useEffect( () => {
+    useEffect(() => {
       setShowEnglish(enVisibility);
-      setShowUkrainian(!enVisibility)
-    }, [enVisibility]
-  )
+      setShowUkrainian(!enVisibility);
+    }, [enVisibility]);
     return (
       <>
         <div className="wordItem">
           <div>{index}</div>
 
           <Checkbox {...{ word, onSwitch }} />
-          <div className="textPart">{showUkrainian ? word.ukrainian : null}</div>
+          <div className="textPart">
+            {showUkrainian ? word.ukrainian : null}
+          </div>
           <button className="smallBtn" onClick={() => toggleVisibility()}>
             {" "}
             <Icon name="eye" size="20px" />
@@ -63,11 +62,15 @@ export const WordItem = withCheckedStyles(
 
           <div className="answerPart">
             <input
-              placeholder="your answer..."
+              placeholder={`${yourAnswer}...`}
               value={answer}
               onChange={onAnswerChange}
             />
-            <button className="smallBtn" onClick={() => sendAnswer()} title={visibleAnswer ? "hide answer" : "check spelling"}>
+            <button
+              className="smallBtn"
+              onClick={() => sendAnswer()}
+              title={visibleAnswer ? "сховати переклад" : "перевірити правопис"}
+            >
               {" "}
               <Icon name="validation" size="24px" />
             </button>
@@ -79,10 +82,18 @@ export const WordItem = withCheckedStyles(
             )}
           </div>
 
-          <button className="smallBtn" onClick={() => toggleNotes()} title="show notes">
+          <button
+            className="smallBtn"
+            onClick={() => toggleNotes()}
+            title="показати примітки"
+          >
             <Icon name="notes" fill="navy" size="24px" />
           </button>
-          <button id="removeBtn" onClick={() => onRemove(word._id)}  title={"remove"}>
+          <button
+            id="removeBtn"
+            onClick={() => onRemove(word._id)}
+            title={"видалити"}
+          >
             {" "}
             <Text color="maroon" size="20px">
               X
@@ -92,6 +103,5 @@ export const WordItem = withCheckedStyles(
         <div>{showNotes ? word.notes || "No notes!" : null}</div>
       </>
     );
-  }
+  },
 );
-

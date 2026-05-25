@@ -82,7 +82,8 @@ button {
 }
 select:hover {
   background-color: silver;
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+  box-shadow:
+    0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 .send:hover,
@@ -90,7 +91,8 @@ button:hover,
 .additionAppointments:hover {
   background-color: #555555;
   color: white;
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+  box-shadow:
+    0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -325,8 +327,14 @@ input[type="checkbox"] {
   height: 40px !important;
   font-size: 16px;
   background-color: darkslateblue;
-  color: white
+  color: white;
 }
 #exportBtn {
   background-color: darkolivegreen;
+}
+.lngSpan {
+  margin: auto 20px;
+}
+.activeLng {
+  color: coral;
 }

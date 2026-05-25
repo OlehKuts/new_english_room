@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { MainForm } from "./components/mainForm";
 import "./styles.css";
 import { WordItem } from "./WordItem";
@@ -6,12 +6,13 @@ import { IrregularTable } from "./components/irregularTable";
 import { useWordsHook } from "./hooks/useWordsHook";
 import { WordsContext } from "./wordsContext";
 import { Icon } from "./icon";
-import { irregularVerbs, phraseList } from "./database";
 import { Text } from "./components/text";
 import { Phrase } from "./components/Phrase";
 import useCopyToClipboard from "./custom_hooks/useCopyToClipboard";
-import { conditions } from "./staticData";
+import { deutschData, englishData } from "./staticData";
 import { getSortedFilteredWords } from "./utils/getSortedFilteredWords";
+import { useLocalStorage } from "./hooks/useLocalStorage";
+import { defineLanguage } from "./utils/defineLanguage";
 
 export const App = () => {
   const [active, setActive] = useState(false);
@@ -21,11 +22,46 @@ export const App = () => {
     false,
     false,
   ]);
-  const { words, onAdd, onSwitch, onRemove, onImport, enVisibility, changeEnVisibility } = useWordsHook();
- 
+  const {
+    words,
+    onAdd,
+    onSwitch,
+    onRemove,
+    onImport,
+    enVisibility,
+    changeEnVisibility,
+  } = useWordsHook();
+
+  const [uiLanguage, setUiLanguage] = useLocalStorage("uiLanguage", "english");
+  const [
+    {
+      conditions,
+      parts,
+      appTitle,
+      allList,
+      irregularVerbsName,
+      mainPhrases,
+      importExport,
+      overall,
+      unknown,
+      studied,
+      listType,
+      mode,
+      shortName,
+      newWord,
+      yourAnswer,
+      emptyListNotification,
+      add,
+      verbForms,
+      irregularVerbs,
+      phraseList,
+    },
+    setUiData,
+  ] = useState(defineLanguage(uiLanguage, englishData, deutschData));
+
   const [condition, setCondition] = useState(conditions[0]);
   const onConditionChange = (e) => setCondition(e.target.value);
-  
+
   // import-export
   const [showImport, setShowImport] = useState(false);
   const [copiedToClipboard, { success }] = useCopyToClipboard();
@@ -34,14 +70,13 @@ export const App = () => {
   const exportData = () => {
     copiedToClipboard(JSON.stringify(words));
     alert(
-      "Дані з запитаннями та відповіддями скопійовано в буфер обіну. Збережіть їх в текстовому документі, щоб використати пізніше."
+      "Дані з запитаннями та відповіддями скопійовано в буфер обіну. Збережіть їх в текстовому документі, щоб використати пізніше.",
     );
   };
 
   const sortedWords = useMemo(() => {
-   return getSortedFilteredWords(condition, words);
+    return getSortedFilteredWords(condition, words);
   }, [condition, words]);
-
 
   const [randomPhrases, setRandomPhrases] = useState([...phraseList]);
   const onRandomPhraseSubmit = (e) => {
@@ -49,7 +84,10 @@ export const App = () => {
     const sortedList = [...randomPhrases].sort(() => Math.random() - 0.5);
     setRandomPhrases(sortedList);
   };
-
+  useEffect(() => {
+    setUiData(defineLanguage(uiLanguage, englishData, deutschData));
+  }, [uiLanguage]);
+  // console.log(defineLanguage("deutsch", englishData, deutschData));
   return (
     <>
       <nav className={` ${active ? "active" : ""}`}>
@@ -57,32 +95,50 @@ export const App = () => {
           <li className="headerName">
             <Icon name="vocabulary" size="20px" color="orange" />
 
-            <span className="headerSpan">English room</span>
+            <span className="headerSpan">{appTitle}</span>
           </li>
           <li
             onClick={() => setShowHeaderPart([true, false, false, false])}
             className={`navbar-links ${showHeaderPart[0] ? "selected" : ""}`}
           >
-            All list
+            {allList}
           </li>
           <li
             onClick={() => setShowHeaderPart([false, true, false, false])}
             className={`navbar-links ${showHeaderPart[1] ? "selected" : ""}`}
           >
-            Irregular Verbs
+            {irregularVerbsName}
           </li>
 
           <li
             onClick={() => setShowHeaderPart([false, false, true, false])}
             className={`navbar-links ${showHeaderPart[2] ? "selected" : ""}`}
           >
-            Main phrases
+            {mainPhrases}
           </li>
           <li
             onClick={() => setShowHeaderPart([false, false, false, true])}
             className={`navbar-links ${showHeaderPart[3] ? "selected" : ""}`}
           >
-            Import&Export
+            {importExport}
+          </li>
+          <li className={`navbar-links`}>
+            <span
+              className={`lngSpan ${uiLanguage === "english" ? "activeLng" : ""}`}
+              onClick={() => {
+                setUiLanguage("english");
+              }}
+            >
+              EN
+            </span>
+            <span
+              className={`lngSpan ${uiLanguage === "deutsch" ? "activeLng" : ""}`}
+              onClick={() => {
+                setUiLanguage("deutsch");
+              }}
+            >
+              DE
+            </span>
           </li>
         </ul>
         <div
@@ -98,17 +154,19 @@ export const App = () => {
         {showHeaderPart[0] ? (
           <>
             <div className="generalInfo">
-              <div>Overall - {words.length}</div>
               <div>
-                Unknown - {words.filter((word) => !word.completed).length}
+                {overall} - {words.length}
               </div>
               <div>
-                Studied - {words.filter((word) => word.completed).length}
+                {unknown} - {words.filter((word) => !word.completed).length}
+              </div>
+              <div>
+                {studied} - {words.filter((word) => word.completed).length}
               </div>
             </div>
             <hr />
             <div className="generalInfo">
-              <div>List type</div>
+              <div>{listType}</div>
 
               <select onChange={onConditionChange}>
                 {conditions.map((cond, idx) => (
@@ -117,18 +175,27 @@ export const App = () => {
                   </option>
                 ))}
               </select>
-              <button onClick={changeEnVisibility} style={{backgroundColor : enVisibility ? "lavender" : "beige"}}>
-                {enVisibility ? "EN mode" : "UA mode"}</button>
+              <button
+                onClick={changeEnVisibility}
+                style={{ backgroundColor: enVisibility ? "lavender" : "beige" }}
+              >
+                {enVisibility ? `${shortName} ${mode}` : `UA ${mode}`}
+              </button>
             </div>
             <hr />
             <div className="allList">
-              <MainForm onAdd={onAdd} />
+              <MainForm
+                onAdd={onAdd}
+                parts={parts}
+                newWord={newWord}
+                add={add}
+              />
               <WordsContext.Provider value={words}>
                 <div className="wordList">
                   <hr />
                   <>
                     {sortedWords.length === 0
-                      ? "There are no words in your list!"
+                      ? emptyListNotification
                       : sortedWords.map((word, index) => (
                           <WordItem
                             key={word._id}
@@ -137,6 +204,7 @@ export const App = () => {
                             onRemove={onRemove}
                             index={index + 1}
                             enVisibility={enVisibility}
+                            yourAnswer={yourAnswer}
                           />
                         ))}
                   </>
@@ -150,7 +218,7 @@ export const App = () => {
           <>
             <h1 className="completeListName">
               {" "}
-              {irregularVerbs.length} irregular verbs
+              {irregularVerbs.length} {irregularVerbsName}
             </h1>
             <hr />
             <div className="irregularTable">
@@ -161,22 +229,12 @@ export const App = () => {
                   color: "white",
                 }}
               >
-                <div className="trSection">
-                  {" "}
-                  <Text>Base form</Text>
-                </div>
-                <div className="trSection">
-                  {" "}
-                  <Text>Past simple</Text>
-                </div>
-                <div className="trSection">
-                  {" "}
-                  <Text size="1rem">-ed</Text>
-                </div>
-                <div className="trSection">
-                  {" "}
-                  <Text size="1rem">Translation</Text>
-                </div>
+                {verbForms.map((item) => (
+                  <div key={item} className="trSection">
+                    {" "}
+                    <Text>{item}</Text>
+                  </div>
+                ))}
               </div>
               {irregularVerbs.map((verb, idx) => (
                 <IrregularTable verb={verb} key={idx} idx={idx} />
@@ -187,16 +245,17 @@ export const App = () => {
         {showHeaderPart[2] ? (
           <>
             <div className="newFour">
+              <h4 className="completeListName">
+                {" "}
+                Перелік поширених фраз ({phraseList.length})
+              </h4>
               <form>
                 <button type="submit" onClick={onRandomPhraseSubmit}>
-                  Sort
+                  Випадковий порядок
                 </button>
               </form>
             </div>
-            <h1 className="completeListName">
-              {" "}
-              List of important phrases ({phraseList.length} phrases)
-            </h1>
+
             <hr />
 
             {randomPhrases.map((i, idx) => (

@@ -30,6 +30,16 @@ export const getSortedFilteredWords = (condition, words) => {
       return words.filter((item) => item.part === "other");
       break;
     // deutsch part
+    case "unbekannte":
+      return words.filter((word) => !word.completed);
+      break;
+    case "zufällige":
+      return [...words].sort(() => Math.random() - 0.5);
+      break;
+    case "alphabetische":
+      return [...words].sort((a, b) => a.english.localeCompare(b.english));
+      break;
+
     case "nomen":
       return words.filter((item) => item.part === "nomen");
       break;

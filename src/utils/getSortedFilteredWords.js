@@ -29,6 +29,9 @@ export const getSortedFilteredWords = (condition, words) => {
     case "other":
       return words.filter((item) => item.part === "other");
       break;
+    case "last 50 randomly":
+      return [...words].slice(0, 50).sort(() => Math.random() - 0.5);
+      break;
     // deutsch part
     case "unbekannte":
       return words.filter((word) => !word.completed);
@@ -36,10 +39,9 @@ export const getSortedFilteredWords = (condition, words) => {
     case "zufällige":
       return [...words].sort(() => Math.random() - 0.5);
       break;
-    case "alphabetische":
+    case "alphabetisch":
       return [...words].sort((a, b) => a.english.localeCompare(b.english));
       break;
-
     case "nomen":
       return words.filter((item) => item.part === "nomen");
       break;
@@ -58,7 +60,9 @@ export const getSortedFilteredWords = (condition, words) => {
     case "sonstige":
       return words.filter((item) => item.part === "sonstige");
       break;
-
+    case "50 letzten zufälligen":
+      return [...words].slice(0, 50).sort(() => Math.random() - 0.5);
+      break;
     default:
       return words;
       break;

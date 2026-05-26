@@ -1652,7 +1652,6 @@ export const deutschData = {
     ],
     parts: ["", "nomen", "verb", "adjektiv", "adverb", "phrase", "sonstige"],
     phraseList: [
-      //
       {
         english: "Guten Morgen, Herr Müller",
         ukrainian: "Доброго ранку, пане Мюллер",

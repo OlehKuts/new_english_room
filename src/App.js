@@ -58,7 +58,7 @@ export const App = () => {
     },
     setUiData,
   ] = useState(defineLanguage(uiLanguage, englishData, deutschData));
-
+  //
   const [condition, setCondition] = useState(conditions[0]);
   const onConditionChange = (e) => setCondition(e.target.value);
 

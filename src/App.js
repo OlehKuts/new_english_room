@@ -87,7 +87,7 @@ export const App = () => {
   useEffect(() => {
     setUiData(defineLanguage(uiLanguage, englishData, deutschData));
   }, [uiLanguage]);
-  // console.log(defineLanguage("deutsch", englishData, deutschData));
+
   return (
     <>
       <nav className={` ${active ? "active" : ""}`}>

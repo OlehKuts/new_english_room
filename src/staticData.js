@@ -1707,6 +1707,81 @@ export const deutschData = {
         ukrainian: "Ви розмовляєте англійською?",
         completed: false,
       },
+      {
+        english: "Mach's gut",
+        ukrainian: "Щасливо!",
+        completed: false,
+      },
+      {
+        english: "Ich muss los",
+        ukrainian: "Я мушу йти",
+        completed: false,
+      },
+      {
+        english: "Echt?",
+        ukrainian: "Справді?",
+        completed: false,
+      },
+      {
+        english: "Ist das dein Ernst?",
+        ukrainian: "Ти це серйозно?",
+        completed: false,
+      },
+      {
+        english: "Passt schon",
+        ukrainian: "Не переймайся!",
+        completed: false,
+      },
+      {
+        english: "Ich warte auf deinen Anruf!",
+        ukrainian: "Чекатиму на твій дзвінок!",
+        completed: false,
+      },
+      {
+        english: "Was hältst du davon?",
+        ukrainian: "Що ти про це думаєш?",
+        completed: false,
+      },
+      {
+        english: "Ich bin dabei",
+        ukrainian: "Я за! Підтримую!",
+        completed: false,
+      },
+      {
+        english: "Keine Ursache",
+        ukrainian: "Нема за що!",
+        completed: false,
+      },
+      {
+        english: "Ich habe viel zu tun.",
+        ukrainian: "У мене ще багато справ.",
+        completed: false,
+      },
+      {
+        english: "Darum geht's nicht",
+        ukrainian: "Справа не в цьому",
+        completed: false,
+      },
+      {
+        english: "Soll das ein Witz sein?",
+        ukrainian: "Це, мабуть, жарт?",
+        completed: false,
+      },
+      {
+        english: "Spinnst du?",
+        ukrainian: "Ти з глузду з'їхав?",
+        completed: false,
+      },
+      {
+        english: "Du bist dran",
+        ukrainian: "Твоя черга",
+        completed: false,
+      },
+      {
+        english: "Reiß dich zusammen!",
+        ukrainian: "Візьми себе в руки!",
+        completed: false,
+      },
     ],
     irregularVerbs: [
       {

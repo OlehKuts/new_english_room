@@ -1782,6 +1782,51 @@ export const deutschData = {
         ukrainian: "Візьми себе в руки!",
         completed: false,
       },
+      {
+        english: "Wo zur Hölle bist du?",
+        ukrainian: "Де тебе носить?",
+        completed: false,
+      },
+      {
+        english: "Ich habe mich von meiner Schokoladenseite gezeigt",
+        ukrainian: "Я показав себе з вигідного боку",
+        completed: false,
+      },
+      {
+        english: "Das ist nicht deine Sache",
+        ukrainian: "Це тебе не стосується",
+        completed: false,
+      },
+      {
+        english: "Haben Sie noch einen Tisch für drei Personen?",
+        ukrainian: "Чи є у Вас стіл на трьох персон?",
+        completed: false,
+      },
+      {
+        english: "Ich brauche noch einen Moment",
+        ukrainian: "Мені потрібна ще хвилинка",
+        completed: false,
+      },
+      {
+        english: "Ich würde gerne bestellen",
+        ukrainian: "Я хотів би зробити замовлення",
+        completed: false,
+      },
+      {
+        english: "Ich hätte gerne einen Salat",
+        ukrainian: "Я хочу салат",
+        completed: false,
+      },
+      {
+        english: "Zu trinken möchte ich eine Cola, bitte",
+        ukrainian: "З напоїв я хотів би колу, будь ласка",
+        completed: false,
+      },
+      {
+        english: "Machen Sie 35 Euro",
+        ukrainian: "Порахуйте, будь ласка, як 35 євро (з чайовими)",
+        completed: false,
+      },
     ],
     irregularVerbs: [
       {

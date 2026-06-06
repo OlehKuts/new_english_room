@@ -1,6 +1,6 @@
 # New English Room 🇬🇧🇺🇦
 
-**New English Room** is a functional React-based application designed for efficient English language learning. Developed as a personal trainer for vocabulary expansion, spelling practice, and mastering common idioms, the app is actively used by the author and a group of users for daily language practice.
+**New English Room** is a functional React-based application designed for efficient English and German language learning. Developed as a personal trainer for vocabulary expansion, spelling practice, and mastering common idioms, the app features a seamless language toggle that instantly switches the entire content focus between English and German. It is actively used by the author and a group of users for daily language practice.
 
 🚀 **Live Demo:** [View Project](https://olehkuts.github.io/new_english_room/)
 
@@ -30,11 +30,11 @@ The heart of the application, offering full control over your personal vocabular
 
 ### 2. Irregular Verbs
 
-An interactive reference table containing the most common English irregular verbs with translations for quick lookup and memorization.
+An interactive reference table containing the most common English or German irregular verbs with translations for quick lookup and memorization.
 
 ### 3. Main Phrases
 
-A curated collection of over 200 essential English phrases and sentences. It includes a self-test feature where users can toggle the visibility of translations.
+A curated collection of over 200 essential English and German phrases and sentences. It includes a self-test feature where users can toggle the visibility of translations.
 
 ### 4. Import & Export (Data Portability)
 

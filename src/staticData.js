@@ -1827,6 +1827,31 @@ export const deutschData = {
         ukrainian: "Порахуйте, будь ласка, як 35 євро (з чайовими)",
         completed: false,
       },
+      {
+        english: "Wann passt es Ihnen?",
+        ukrainian: "Коли Вам зручно?",
+        completed: false,
+      },
+      {
+        english: "Ich wurde überwiesen",
+        ukrainian: "Мене направили",
+        completed: false,
+      },
+      {
+        english: "Wie fühlen Sie sich?",
+        ukrainian: "Як почуваєтеся?",
+        completed: false,
+      },
+      {
+        english: "Was fehlt Ihnen?",
+        ukrainian: "Що Вас турбує?",
+        completed: false,
+      },
+      {
+        english: "Ich habe Gliederschmerzen",
+        ukrainian: "У мене ломить тіло",
+        completed: false,
+      },
     ],
     irregularVerbs: [
       {
